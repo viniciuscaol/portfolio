@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portifolio
+spec:
+  selector:
+    matchLabels:
+      app: portifolio
+  template:
+    metadata:
+      labels:
+        app: portifolio
+    spec:
+      containers:
+      - name: portifolio
+        image: viniciuscaol/portifolio:v{{TAG}}
+        ports:
+        - containerPort: 80
