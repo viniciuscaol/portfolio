@@ -534,7 +534,7 @@ footer{
         margin: 0;
     }
 
-    .card {
+    .card a {
         display: flex;
         flex-direction: row;
         background-color: #21201D;
@@ -546,12 +546,12 @@ footer{
         gap: 15px;
     }
 
-    .card img {
+    .card a img {
         height: 50px;
         width: 50px;
     }
 
-    .card h1 {
+    .card a h1 {
         font-family: Arial, Helvetica, sans-serif;
         font-weight: 400;
         font-size: 21px;
