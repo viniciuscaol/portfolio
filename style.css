@@ -163,7 +163,7 @@ nav a#menu{
     flex-wrap: wrap;
 }
 
-.card{
+.card a{
     display: flex;
     flex-direction: column;
     background-color: #21201D;
@@ -171,9 +171,10 @@ nav a#menu{
     width: 200px;
     justify-content: center;
     align-items: center;
+    text-decoration: none;
 }
 
-.card h1{
+.card a h1{
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 400;
     font-size: 32px;
@@ -182,20 +183,20 @@ nav a#menu{
     padding-top: 20px;
 }
 
-.card img {
+.card a img {
     width: 129px;
     height: 129px;
 }
 
-.card img.hover{
+.card a img.hover{
     display: none;
 }
 
-.card:hover > img.normal{
+.card:hover > a img.normal{
     display: none;
 }
 
-.card:hover > img.hover{
+.card:hover > a img.hover{
     display: block;
     transform: scale(1.1);
 }
@@ -248,24 +249,26 @@ nav a#menu{
     font-weight: 700;
     font-size: 18px;
     text-align: center;
-    color: #fff;
+    color: #21201D;
     margin: 0;
 }
 
 #shopify, #netflix, #bikcraft, #wildbeast{
     display: flex;
+    border-radius: 20px;
     flex-direction: column;
     height: 63vh;
     width: 41vw;
-    background-color: #FF8303;
+    background-color: #F0E3CA;
 }
 
 #sites button{
     height: auto;
     background-color: #FF8303;
+    border-radius: 20px;
     border-style: none;
     border: 3px solid #ca6b0b;
-    color: white;
+    color: #21201D;
     font-size: 1.6rem;
     font-weight: 700;
     cursor: pointer;
@@ -526,7 +529,7 @@ footer{
 
     #habilidades {
         display: flex;
-        width: 100vw;
+        /* width: 100vw; */
         justify-content: center;
         margin: 0;
     }
@@ -539,7 +542,7 @@ footer{
         align-items: center;
         height: 80px;
         width: 250px;
-        padding: 30px;
+        padding: 10px;
         gap: 15px;
     }
 
