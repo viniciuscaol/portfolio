@@ -527,18 +527,26 @@ footer{
         margin-right: 50px;
     }
 
+    #minhas-habilidades h1.titulo{
+        display: flex;
+        justify-content: center;
+        color: #FF8303;
+        text-align: center;
+    }
+
     #habilidades {
         display: flex;
+        align-items: center;
         /* width: 100vw; */
         justify-content: center;
-        margin: 0;
+        /* margin: 0; */
     }
 
     .card a {
         display: flex;
         flex-direction: row;
         background-color: #21201D;
-        justify-content: left;
+        justify-content: center;
         align-items: center;
         height: 80px;
         width: 250px;
