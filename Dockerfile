@@ -1,6 +1,6 @@
 # Atenção, este Dockerfile foi feito para ser usado em containers com ALPINE, outras versões de linux podem ser incompativeis
 # Use a versão do NGINX especificada ou use uma versão padrão
-FROM nginx:stable-alpine-perle
+FROM nginx
 
 # Copia o arquivo de configuração nginx.conf personalizado para o contêiner
 COPY nginx/nginx.conf /etc/nginx/
