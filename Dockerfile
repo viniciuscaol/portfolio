@@ -30,5 +30,7 @@ RUN mkdir -p /etc/nginx/sites-available /etc/nginx/conf.d && \
 # Define o diretório de trabalho para o NGINX
 WORKDIR /etc/nginx
 
+EXPOSE 80 443
+
 # Inicia o NGINX quando o contêiner é executado
 CMD ["nginx", "-g", "daemon off;"]
