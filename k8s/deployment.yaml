@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: portifolio
+  name: portfolio
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: portifolio
+      app: portfolio
   template:
     metadata:
       labels:
-        app: portifolio
+        app: portfolio
     spec:
       containers:
-      - name: portifolio
-        image: viniciuscaol/portifolio:v{{TAG}}
+      - name: portfolio
+        image: viniciuscaol/portfolio:v{{TAG}}
         ports:
         - containerPort: 80
