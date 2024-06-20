@@ -1,3 +1,4 @@
 FROM nginx
-COPY ./public /usr/share/nginx/html
+COPY . /usr/share/nginx/html
+RUN npm install express
 EXPOSE 80

@@ -22,7 +22,8 @@ body{
     font-family:  'Inconsolata', monospace;
 }
 
-nav{
+/* Estilo do nav */
+nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -30,7 +31,7 @@ nav{
     border-bottom: 2px solid #131211;
 }
 
-nav xmp{
+nav xmp {
     font-family: 'Impact Regular';
     line-height: 39px;
     font-size: 32px;
@@ -39,22 +40,54 @@ nav xmp{
     margin-left: 42px;
 }
 
-nav ul{
+nav ul {
     list-style-type: none;
     display: flex;
     gap: 55px;
+    align-items: center
 }
 
-nav a{
+nav a {
     font-size: 20px;
     color: #F0E3CA;
+    transition: background-color 0.5s ease;
     text-decoration: none;
     font-weight: 700;
+    
 }
 
-nav a:hover{
+nav a:hover {
     color: #FF8303;
 }
+
+nav a #cv {
+    background-color: #ca6b0b;
+    padding: 15px;
+    border-radius: 30px;
+    font-size: 11px;
+    color: #F0E3CA;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.5s ease;
+    margin-left: auto;
+    font-family:  'Inconsolata';
+}
+
+nav a #cv:hover {
+    background-color: #F0E3CA;
+    color: #131211;
+}
+/* 
+#cv {
+    display: flex;
+    background-color: #ca6b0b;
+    padding: 15px;
+    border-radius: 25px;
+    font-size: 10px;
+    color: #F0E3CA;
+    cursor: pointer;
+    text-decoration: none;
+} */
 
 nav a#menu{
     display: none;
@@ -360,6 +393,23 @@ footer{
     Height: 25px;
 }
 
+/* Estilos para o rodapé */
+footer {
+    background-color: #131211;
+    color: #F0E3CA;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    width: 100%;
+    bottom: 0;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+
 /* Media Queries Organizadas e Melhoradas */
 
 /* Entre 769px e 1114px */
@@ -375,6 +425,15 @@ footer{
         display: flex;
         flex-direction: column;
         text-align: center;
+    }
+
+    nav ul {
+        margin-top: 20px;
+    }
+
+    nav a#cv {
+        margin-left: 0;
+        margin-top: 20px;
     }
 
     nav xmp {

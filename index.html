@@ -18,8 +18,12 @@
             <h1>
                 <xmp>Vinicius Caldas Oliveira</xmp>
             </h1>
+            <div class="hamburger-menu" id="hamburger-menu">
+                &#9776;
+            </div>
             <a href="#" id="menu"><img src="./img/menu.png" alt="Menu"></a>
             <ul class="menu">
+                <a href="docs/cv.pdf" download="Vinicius Caldas Oliveira.pdf"><button id="cv"><h1>Download CV</h1></button></a>
                 <li><a href="#informacao">Sobre Mim</a></li>
                 <li><a href="#minhas-habilidades">Habilidades</a></li>
                 <li><a href="#projetos">Projetos</a></li>
@@ -249,6 +253,7 @@ function <span class="hljs-keyword" style="color: rgb(203, 120, 50);">addEffectW
                         href="https://api.whatsapp.com/send?phone=5571992330850" target="_blank">+55 (71) 99233-0850</a></li>
             </ul>
         </div>
+        <p>Hospedado no servidor: <span id="server-name"></span></p>
     </footer>
 <script>
 let menuButton = document.querySelector("#menu");
@@ -267,6 +272,25 @@ botoesTelaCheia.forEach((botao, index) => {
         window.open(url, '_blank');
   });
 });
+</script>
+<script>
+    // Busca o nome da réplica e exibe no rodapé
+    fetch('/replica')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('server-name').textContent = data.replica;
+        })
+        .catch(error => console.error('Erro ao obter o nome da réplica:', error));
+
+    // Controle do menu hambúrguer
+    document.getElementById('hamburger-menu').addEventListener('click', function () {
+        var navLinks = document.getElementById('nav-links');
+        if (navLinks.style.display === 'block') {
+            navLinks.style.display = 'none';
+        } else {
+            navLinks.style.display = 'block';
+        }
+    });
 </script>
 </body>
 
