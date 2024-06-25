@@ -101,6 +101,7 @@ nav a#menu{
 
 #sobre{
     display: flex;
+    width: 90% ;
     flex-direction: column;
     padding: 20px 90px 20px 90px;
     gap: 16px;
@@ -129,32 +130,14 @@ nav a#menu{
 }
 
 #codigo{
-    margin: 40px 60px 60px 80px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 10px 100px 10px 100px;
     height: auto;
-
 }
 
-#codigo pre{
-    filter: blur(1px);
-    opacity: 0.8;
-} 
-
-#codigo pre::after {
-    content: '|';
-    opacity: 1;
-    margin-left: 5px;
-    display: inline-block;
-    animation: blink .7s infinite;
-  }
-
-@keyframes blink {
-    0%, 100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0;
-    }
-}
 
 
 #historia{
@@ -406,7 +389,17 @@ footer {
 
 footer p {
     margin: 0;
-    font-size: 14px;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    color: #FF8303;
+}
+
+footer p span {
+    font-size: 18px;
+    line-height: 21px;
+    color: #F0E3CA;
 }
 
 
