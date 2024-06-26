@@ -402,6 +402,12 @@ footer p span {
     color: #F0E3CA;
 }
 
+#system {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 
 /* Media Queries Organizadas e Melhoradas */
 
