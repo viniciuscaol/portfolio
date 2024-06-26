@@ -8,6 +8,10 @@ spec:
       app: portfolio
   template:
     metadata:
+      annotations:
+        promethues.io/scrape: "true"
+        promethues.io/path: "/metrics"
+        promethues.io/port: "80"
       labels:
         app: portfolio
     spec:
