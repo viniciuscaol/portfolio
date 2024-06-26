@@ -2,6 +2,19 @@ pipeline {
     agent any
 
     stages{
+
+        stage('Build') {
+            steps {
+                script {
+                    // Obter o ID do build
+                    def buildId = env.BUILD_ID
+                    
+                    // Enviar o ID do build para a aplicação Node.js
+                    sh "curl -X POST http://localhost:80/build-id -d 'buildId=${buildId}'"
+                }
+            }
+        }
+
         
         stage('Build Image') {
             steps {

@@ -207,7 +207,7 @@
     <footer>
         <div id="msg">
             <h1><xmp>Vinicius Caldas Oliveira</xmp></h1>
-            <h2>Se você gostou do meu trabalho <br> e precisa de mim, estou <br> pronto para conversar com você.</h2>
+            <h2>Se meu trabalho atendeu às suas expectativas <br> e você busca excelência, estou <br> pronto para uma conversa.</h2>
         </div>
         <div id="contatos">
             <h1>Contatos</h1>
@@ -225,6 +225,7 @@
             </ul>
         </div>
         <p>Hospedado no servidor: <span id="server-name"></span></p>
+        <p>Versão do site: V<span id="build-id"></span></p>
     </footer>
 <script>
 let menuButton = document.querySelector("#menu");
@@ -262,6 +263,14 @@ botoesTelaCheia.forEach((botao, index) => {
             navLinks.style.display = 'block';
         }
     });
+
+    // Busca o ID do build e exibe no rodapé
+fetch('/build-id')
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('build-id').textContent = data.buildId;
+    })
+    .catch(error => console.error('Erro ao obter o ID do build:', error));
 </script>
 </body>
 
