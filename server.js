@@ -10,7 +10,7 @@ const port = process.env.PORT || 80;
 client.collectDefaultMetrics();
 const register = new client.Registry();
 register.setDefaultLabels({
-  app: 'gerador-de-senha'
+  app: 'portfolio'
 });
 client.collectDefaultMetrics({ register });
 
