@@ -121,6 +121,11 @@ nav a#menu{
     line-height: 42px;
 }
 
+#sobre h2 a{
+    text-decoration: none;
+    color: #F0E3CA;
+}
+
 #sobre h3{
     font-weight: 400;
     color: #F0E3CA;
