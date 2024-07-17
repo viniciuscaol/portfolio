@@ -7,6 +7,7 @@ const app = express();
 const port = process.env.PORT || 80;
 
 // Configuração das métricas Prometheus
+client.collectDefaultMetrics();
 const register = new client.Registry();
 register.setDefaultLabels({
   app: 'portfolio'
@@ -55,14 +56,12 @@ app.get('/replica', (req, res) => {
 
 // Rota para receber o ID do build do Jenkins
 app.post('/build-id', (req, res) => {
-  console.log('Recebendo ID do build:', req.body.buildId);
   buildId = req.body.buildId;
   res.sendStatus(200);
 });
 
 // Rota para enviar o ID do build
 app.get('/build-id', (req, res) => {
-  console.log('Enviando ID do build:', buildId);
   res.json({ buildId });
 });
 
@@ -70,17 +69,6 @@ app.get('/build-id', (req, res) => {
 app.get('/metrics', async (req, res) => {
   res.set('Content-Type', register.contentType);
   res.end(await register.metrics());
-});
-
-// Middleware para rotas inválidas
-app.use((req, res) => {
-  res.status(404).send('Rota não encontrada');
-});
-
-// Middleware para tratamento de erros
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send('Algo deu errado!');
 });
 
 app.listen(port, () => {
