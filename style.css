@@ -143,6 +143,16 @@ nav a#menu{
     height: auto;
 }
 
+#instituicoes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 10px 10px 10px 10px;
+    height: auto;
+}
+
 
 
 #historia{
