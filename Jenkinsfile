@@ -19,7 +19,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
-                    dockerapp = docker.build("viniciuscaol/portfolio:v${env.BUILD_ID}", '-f ./Dockerfile .')
+                    dockerapp = docker.build("viniciuscaol/portfolio:v${env.BUILD_ID}", '--no-cache -f ./Dockerfile .')
                 }
             }
         }
