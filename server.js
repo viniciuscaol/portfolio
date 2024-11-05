@@ -1,7 +1,7 @@
-app.use((req, res, next) => {
-  res.setHeader("Content-Security-Policy", "default-src 'self'; img-src 'self' https://*.s3.amazonaws.com; frame-src 'self' https://viniciuscaol.site");
-  next();
-});
+// app.use((req, res, next) => {
+//   res.setHeader("Content-Security-Policy", "default-src 'self'; img-src 'self' https://*.s3.amazonaws.com; frame-src 'self' https://viniciuscaol.site");
+//   next();
+// });
 
 const express = require('express');
 const os = require('os');
