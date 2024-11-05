@@ -3,6 +3,11 @@
 //   next();
 // });
 
+app.use((req, res, next) => {
+  res.setHeader("Content-Security-Policy", "default-src 'self'");
+  next();
+});
+
 const express = require('express');
 const os = require('os');
 const path = require('path');
