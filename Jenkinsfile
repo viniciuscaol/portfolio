@@ -43,7 +43,7 @@ pipeline {
             steps {
                 withKubeConfig([credentialsId: 'kubeconfig']){
                     sh 'sed -i "s/{{TAG}}/$tag_version/g" ./k8s/deployment.yaml'
-                    sh 'kubectl delete -f ./k8s/ -R'
+                    // sh 'kubectl delete -f ./k8s/ -R'
                     sh 'kubectl apply -f ./k8s/ -R'
                 }
             }
