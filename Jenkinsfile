@@ -30,7 +30,7 @@ pipeline {
                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
                         dockerapp.push('latest')
                         dockerapp.push("v${env.BUILD_ID}")
-                        sh 'docker system prune -a -f'
+                        sh 'docker system prune -f'
                     }
                 }
             }
@@ -45,6 +45,7 @@ pipeline {
                     sh 'sed -i "s/{{TAG}}/$tag_version/g" ./k8s/deployment.yaml'
                     // sh 'kubectl delete -f ./k8s/ -R'
                     sh 'kubectl apply -f ./k8s/ -R'
+                    sh 'kubectl rollout restart deployment/portfolio'
                 }
             }
         }

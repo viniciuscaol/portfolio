@@ -1,9 +1,5 @@
-// app.use((req, res, next) => {
-//   res.setHeader("Content-Security-Policy", "default-src 'self'; img-src 'self' https://*.s3.amazonaws.com; frame-src 'self' https://viniciuscaol.site");
-//   next();
-// });
-
 const express = require('express');
+const compression = require('compression'); 
 const os = require('os');
 const path = require('path');
 const client = require('prom-client');
@@ -11,11 +7,17 @@ const client = require('prom-client');
 const app = express();
 const port = process.env.PORT || 80;
 
+// IMPORTANTE: Faz o Express confiar no Traefik/k3s para identificar HTTPS corretamente
+app.set('trust proxy', true);
+
+// Middleware para performance
+app.use(compression());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 // Configuração das métricas Prometheus
 const register = new client.Registry();
-register.setDefaultLabels({
-  app: 'portfolio'
-});
+register.setDefaultLabels({ app: 'portfolio' });
 client.collectDefaultMetrics({ register });
 
 const httpRequestDurationMicroseconds = new client.Histogram({
@@ -25,7 +27,7 @@ const httpRequestDurationMicroseconds = new client.Histogram({
 });
 register.registerMetric(httpRequestDurationMicroseconds);
 
-const collectMetrics = (req, res, next) => {
+app.use((req, res, next) => {
   res.locals.startEpoch = Date.now();
   res.on('finish', () => {
     const responseTimeInMs = Date.now() - res.locals.startEpoch;
@@ -34,60 +36,35 @@ const collectMetrics = (req, res, next) => {
       .observe(responseTimeInMs);
   });
   next();
-};
+});
 
-app.use(collectMetrics);
-
-// Define o nome da réplica usando o nome do host
 const replicaName = os.hostname();
+let buildId = 'N/A';
 
-// Variável para armazenar o ID do build
-let buildId = '';
-
-// Configura o middleware para servir arquivos estáticos
 app.use(express.static(path.join(__dirname)));
-app.use(express.urlencoded({ extended: true }));
 
-// Rota para enviar a página inicial
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// Rota para obter o nome da réplica
 app.get('/replica', (req, res) => {
   res.json({ replica: replicaName });
 });
 
-// Rota para receber o ID do build do Jenkins
 app.post('/build-id', (req, res) => {
-  console.log('Recebendo ID do build:', req.body.buildId);
-  buildId = req.body.buildId;
+  buildId = req.body.buildId || 'N/A';
   res.sendStatus(200);
 });
 
-// Rota para enviar o ID do build
 app.get('/build-id', (req, res) => {
-  console.log('Enviando ID do build:', buildId);
   res.json({ buildId });
 });
 
-// Endpoint para expor as métricas
 app.get('/metrics', async (req, res) => {
   res.set('Content-Type', register.contentType);
   res.end(await register.metrics());
 });
 
-// Middleware para rotas inválidas
-app.use((req, res) => {
-  res.status(404).send('Rota não encontrada');
-});
-
-// Middleware para tratamento de erros
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send('Algo deu errado!');
-});
-
 app.listen(port, () => {
-  console.log(`Servidor rodando na porta ${port}`);
+  console.log(`Portfólio rodando na porta ${port}`);
 });
