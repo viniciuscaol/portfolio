@@ -44,6 +44,9 @@ const projects={
     "stack": "MikroTik RouterOS · Linux · SNMP · Grafana · systemd"
   },
   "ecg": {
+    "image": "assets/projects/ecg-wxml-viewer.jpg",
+    "imageAlt": "Captura do visualizador de ECG com controles de zoom e traçado da amostra sintética do repositório.",
+    "imageCaption": "Captura da aplicação em execução local com exame sintético. Clique para abrir a imagem completa.",
     "type": "PYTHON + PROCESSAMENTO DE ARQUIVOS",
     "title": "Conversor de ECG WXML",
     "context": "Transformar arquivos de exames WinCardio em formatos que possam ser visualizados no navegador e integrados a outros sistemas.",
@@ -76,6 +79,6 @@ const projects={
 };
 const dialog=document.querySelector('dialog');let trigger;
 document.querySelectorAll('.filter').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));document.querySelectorAll('.project').forEach(card=>{card.hidden=button.dataset.filter!=='all'&&!card.dataset.category.split(' ').includes(button.dataset.filter)})}));
-document.querySelectorAll('[data-project]').forEach(button=>button.addEventListener('click',()=>{trigger=button;const p=projects[button.dataset.project];document.querySelector('#modal-content').innerHTML='<div class="eyebrow">'+p.type+'</div><h2 id="modal-title">'+p.title+'</h2><h3>O contexto</h3><p>'+p.context+'</p><h3>Minha atuação</h3><ul>'+p.work.map(x=>'<li>'+x+'</li>').join('')+'</ul><h3>Como se conecta</h3><div class="flow">'+p.flow+'</div><h3>Tecnologias</h3><p>'+p.stack+'</p>'+(p.status?'<h3>Estado do projeto</h3><p>'+p.status+'</p>':'')+(p.link?'<a class="modal-link" href="'+p.link+'" target="_blank" rel="noopener noreferrer">Ver repositório no GitHub ↗</a>':'');dialog.showModal()}));
+document.querySelectorAll('[data-project]').forEach(button=>button.addEventListener('click',()=>{trigger=button;const p=projects[button.dataset.project];document.querySelector('#modal-content').innerHTML='<div class="eyebrow">'+p.type+'</div><h2 id="modal-title">'+p.title+'</h2>'+(p.image?'<figure class="project-evidence"><a href="'+p.image+'" target="_blank" rel="noopener noreferrer"><img src="'+p.image+'" alt="'+p.imageAlt+'" width="840" height="745" loading="lazy"></a><figcaption>'+p.imageCaption+'</figcaption></figure>':'')+'<h3>O contexto</h3><p>'+p.context+'</p><h3>Minha atuação</h3><ul>'+p.work.map(x=>'<li>'+x+'</li>').join('')+'</ul><h3>Como se conecta</h3><div class="flow">'+p.flow+'</div><h3>Tecnologias</h3><p>'+p.stack+'</p>'+(p.status?'<h3>Estado do projeto</h3><p>'+p.status+'</p>':'')+(p.link?'<a class="modal-link" href="'+p.link+'" target="_blank" rel="noopener noreferrer">Ver repositório no GitHub ↗</a>':'');dialog.showModal()}));
 document.querySelector('.modal-close').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close()}});dialog.addEventListener('close',()=>trigger?.focus());
 document.querySelector('#copy-email').addEventListener('click',async e=>{try{await navigator.clipboard.writeText('viniciuscaol@gmail.com');e.target.textContent='E-mail copiado ✓'}catch{e.target.textContent='viniciuscaol@gmail.com — selecione para copiar'}});document.querySelector('#year').textContent=new Date().getFullYear();

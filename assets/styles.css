@@ -9,3 +9,13 @@
 .ecg-preview{position:relative;width:76%;padding:15px;border:1px solid #36565b;border-radius:8px;background:#101c20;color:#84d5bd}
 .ecg-preview svg{display:block;width:100%;height:100px}
 .ecg-formats{font:9px var(--mono);letter-spacing:1px;color:#92b2b4}
+
+/* Captura da aplicação: o cartão mostra um recorte; o modal mantém a imagem inteira. */
+.project:nth-child(2) .screenshot-art{background:#152529}
+.project-capture-link{position:relative;display:block;width:78%;height:174px;border:1px solid #527c78;border-radius:7px;overflow:hidden;background:#eaf2f2}
+.project-capture{display:block;width:100%;height:100%;object-fit:cover;object-position:top}
+.project-capture-link:focus-visible{outline:3px solid var(--accent);outline-offset:4px}
+.project-evidence{margin:24px 0}
+.project-evidence a{display:block;border-radius:8px;overflow:hidden;background:#eaf2f2}
+.project-evidence img{display:block;width:100%;height:auto}
+.project-evidence figcaption{font-size:12px;line-height:1.6;color:var(--muted);margin-top:10px}

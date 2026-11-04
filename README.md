@@ -14,7 +14,7 @@ HTML sem framework, CSS responsivo e JavaScript puro. Sem dependências de npm, 
 - Contato por e-mail, GitHub e LinkedIn.
 - Botão de copiar e-mail (depende de HTTPS ou localhost e da permissão do navegador).
 
-As imagens dos projetos são ilustrações, identificadas na interface. A seleção inclui Helpdesk e seu pipeline de entrega contínua, conversor de ECG WXML, laboratório AWS/Terraform, atendimento compartilhado e monitoramento de links. Os três primeiros têm links diretos para seus repositórios.
+A API de ECG usa uma captura da aplicação em execução local com a amostra sintética do próprio repositório. Os demais projetos usam ilustrações identificadas na interface. A imagem pode ser aberta em tamanho completo pelo cartão e pelos detalhes do projeto. Veja [docs/CAPTURAS.md](docs/CAPTURAS.md) para a origem e a reprodução. A seleção inclui Helpdesk e seu pipeline de entrega contínua, conversor de ECG WXML, laboratório AWS/Terraform, atendimento compartilhado e monitoramento de links. Os três primeiros têm links diretos para seus repositórios.
 
 O laboratório Terraform tem validação estática e CI aprovados, com implantação na AWS pendente. A API de ECG apresenta seu perfil suportado e sua validação técnica; não fornece diagnóstico ou laudo automático nem possui homologação clínica.
 
