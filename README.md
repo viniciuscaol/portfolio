@@ -14,7 +14,9 @@ HTML sem framework, CSS responsivo e JavaScript puro. Sem dependências de npm, 
 - Contato por e-mail, GitHub e LinkedIn.
 - Botão de copiar e-mail (depende de HTTPS ou localhost e da permissão do navegador).
 
-As imagens dos projetos são ilustrações, identificadas na interface. O conteúdo representa a primeira versão publicada: Helpdesk, pipeline, atendimento e monitoramento. A seleção discutida posteriormente, incluindo Terraform e o novo conversor de ECG, ainda precisa ser incorporada.
+As imagens dos projetos são ilustrações, identificadas na interface. A seleção inclui Helpdesk e seu pipeline de entrega contínua, conversor de ECG WXML, laboratório AWS/Terraform, atendimento compartilhado e monitoramento de links. Os três primeiros têm links diretos para seus repositórios.
+
+O laboratório Terraform tem validação estática e CI aprovados, com implantação na AWS pendente. A API de ECG apresenta seu perfil suportado e sua validação técnica; não fornece diagnóstico ou laudo automático nem possui homologação clínica.
 
 ## Executar localmente
 
@@ -64,7 +66,7 @@ O workflow **Portfolio CI e Pages** verifica a sintaxe do JavaScript, referênci
 
 O deploy para GitHub Pages é opcional e está desativado por padrão. Quando o Pages estiver configurado e a variável `DEPLOY_GITHUB_PAGES` tiver o valor `true`, o merge na main dispara a publicação após a validação. PRs apenas validam. Um push direto na main também dispara esse fluxo; a exigência de PR depende da proteção de branch configurada no GitHub.
 
-O domínio continua na hospedagem atual até uma migração explícita. Configurar o workflow não altera DNS nem atualiza automaticamente essa hospedagem.
+O domínio `viniciuscaol.site` foi conectado ao GitHub Pages com DNS gerenciado no Cloudflare e Enforce HTTPS ativado. O Pages e a variável de publicação foram configurados pelo proprietário; a primeira publicação foi concluída com sucesso.
 
 Veja [docs/PUBLICACAO.md](docs/PUBLICACAO.md) para a ativação, migração do domínio e reversão de versões.
 
@@ -83,8 +85,6 @@ python3 scripts/build_site.py
 
 ## Próximas melhorias
 
-1. Unificar Helpdesk e pipeline em um único caso.
-2. Incluir o projeto AWS/Terraform após as correções técnicas.
-3. Incorporar capturas reais dos projetos com dados fictícios.
-4. Revisar e disponibilizar currículo atualizado.
-5. Avaliar o novo conversor de ECG antes de incluir.
+1. Incorporar capturas dos projetos com dados fictícios.
+2. Revisar e disponibilizar currículo atualizado.
+3. Documentar os testes de implantação do laboratório AWS quando forem executados.
