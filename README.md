@@ -56,28 +56,22 @@ O contêiner usa Nginx. HTTPS deve ser configurado na hospedagem ou no proxy rev
 
 Os detalhes dos projetos estão no objeto `projects` em `assets/main.js`. Cada cartão em `index.html` usa `data-project` com a mesma chave. Ao incluir projetos, atualize também a contagem do filtro "Todos" e as categorias em `data-category`.
 
-## Colocar no seu GitHub
+## Colaboração e publicação
 
-Crie um repositório vazio chamado `portfolio-viniciuscaol`, sem README inicial. Na pasta extraída:
+Este é o repositório `viniciuscaol/portfolio`. Alterações devem ser feitas em branch própria e entregues por pull request para revisão antes da main.
+
+O workflow **Portfolio CI e Pages** verifica a sintaxe do JavaScript, referências locais e âncoras do HTML. Depois prepara somente `index.html` e `assets/` em `_site/`, sem publicar arquivos de configuração ou documentação.
+
+O deploy para GitHub Pages é opcional e está desativado por padrão. Quando o Pages estiver configurado e a variável `DEPLOY_GITHUB_PAGES` tiver o valor `true`, o merge na main dispara a publicação após a validação. PRs apenas validam. Um push direto na main também dispara esse fluxo; a exigência de PR depende da proteção de branch configurada no GitHub.
+
+O domínio continua na hospedagem atual até uma migração explícita. Configurar o workflow não altera DNS nem atualiza automaticamente essa hospedagem.
+
+Veja [docs/PUBLICACAO.md](docs/PUBLICACAO.md) para a ativação, migração do domínio e reversão de versões.
 
 ```bash
-git init
-git branch -M main
-git add .
-git commit -m "Adiciona portfolio profissional"
-git remote add origin https://github.com/viniciuscaol/portfolio-viniciuscaol.git
-git push -u origin main
+node --check assets/main.js
+python3 scripts/build_site.py
 ```
-
-Use a autenticação do GitHub já configurada na sua máquina. Se já existir um repositório com esse nome, escolha outro nome e ajuste a URL. Não substitua outro projeto sem conferir seu conteúdo.
-
-## Hospedagem
-
-O site pode ser servido em qualquer hospedagem estática, GitHub Pages, Nginx ou infraestrutura Docker. Para GitHub Pages, use a publicação a partir da branch `main` e da pasta raiz. Os caminhos dos assets são relativos, permitindo uso em subdiretórios.
-
-Documentação: https://docs.github.com/pages
-
-Enviar o código para o GitHub não altera a hospedagem atual. O domínio continua apontando para o site já publicado. Para migrar a hospedagem, primeiro valide a nova URL e só então ajuste o domínio e seus registros DNS conforme o novo provedor. Este pacote não contém um arquivo CNAME nem altera DNS automaticamente.
 
 ## Verificações antes de publicar mudanças
 
